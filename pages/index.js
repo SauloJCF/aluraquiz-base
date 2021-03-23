@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import Head from 'next/head';
 import db from '../db.json';
+import IndexPage from '../src/components/Header';
 import Widget from '../src/components/Widget';
 import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
@@ -28,13 +28,7 @@ const QuizContainer = styled.div`
 export default function Home() {
   return (      
       <QuizBackground backgroundImage={db.bg}>
-        <Head>
-        <meta property="og:image" content={db.bg} />
-        <meta property="og:image:type" content="image/jpeg"/>
-        <meta property="og:image:width" content="800"/>
-        <meta property="og:image:height" content="600"/> 
-        <title>AluraQuiz</title>
-        </Head>
+        <IndexPage/>
         <QuizContainer>
           <Widget>
             <Widget.Header>
