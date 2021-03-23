@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Head from 'next/head';
 import db from '../db.json';
 import Widget from '../src/components/Widget';
 import Footer from '../src/components/Footer';
@@ -25,28 +26,35 @@ const QuizContainer = styled.div`
 `;
 
 export default function Home() {
-  return (
-    <QuizBackground backgroundImage={db.bg}>
-      <QuizContainer>
-        <Widget>
-          <Widget.Header>
-            <h1>The legend of Zelda</h1>
-          </Widget.Header>
-          <Widget.Content>
-            <p>lorem ipsun</p>
-          </Widget.Content>
-        </Widget>
-        <Widget>
-          <Widget.Header>
-              <h1>Quizes da Galera</h1>
-          </Widget.Header>
-          <Widget.Content>
-            <p>lorem ipsun</p>
-          </Widget.Content>
-        </Widget>
-        <Footer />
-      </QuizContainer>
-      <GitHubCorner projectUrl="https://github.com/SauloJCF"/>
-    </QuizBackground>    
+  return (      
+      <QuizBackground backgroundImage={db.bg}>
+        <Head>
+        <meta property="og:image" content={db.bg} />
+        <meta property="og:image:type" content="image/jpeg"/>
+        <meta property="og:image:width" content="800"/>
+        <meta property="og:image:height" content="600"/> 
+        <title>AluraQuiz</title>
+        </Head>
+        <QuizContainer>
+          <Widget>
+            <Widget.Header>
+              <h1>The legend of Zelda</h1>
+            </Widget.Header>
+            <Widget.Content>
+              <p>lorem ipsun</p>
+            </Widget.Content>
+          </Widget>
+          <Widget>
+            <Widget.Header>
+                <h1>Quizes da Galera</h1>
+            </Widget.Header>
+            <Widget.Content>
+              <p>lorem ipsun</p>
+            </Widget.Content>
+          </Widget>
+          <Footer />
+        </QuizContainer>
+        <GitHubCorner projectUrl="https://github.com/SauloJCF/aluraquiz-base"/>
+      </QuizBackground>
   );
 }
