@@ -5,6 +5,7 @@ import Widget from '../src/components/Widget';
 import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
 import QuizBackground from '../src/components/QuizBackground';
+import QuizLogo from '../src/components/QuizLogo';
 
 /*const BackgroundImage = styled.div`// tag function
   display: flex;
@@ -30,6 +31,7 @@ export default function Home() {
       <QuizBackground backgroundImage={db.bg}>
         <IndexPage/>
         <QuizContainer>
+          <QuizLogo />
           <Widget>
             <Widget.Header>
               <h1>The legend of Zelda</h1>
