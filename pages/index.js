@@ -7,6 +7,7 @@ import Widget from '../src/components/Widget';
 import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
 import QuizBackground from '../src/components/QuizBackground';
+import Input from '../src/components/Input';
 import QuizLogo from '../src/components/QuizLogo';
 
 /* const BackgroundImage = styled.div`// tag function
@@ -40,18 +41,17 @@ export default function Home() {
             <h1>The legend of Zelda</h1>
           </Widget.Header>
           <Widget.Content>
-            <form onSubmit={function (infosDoEvento) {
+            <form onSubmit={(infosDoEvento) => {
               router.push(`/quiz?name=${name}`);
               infosDoEvento.preventDefault();
-              console.log('Fazendo uma submissão por meio do react.');
-
+              // console.log('Fazendo uma submissão por meio do react.');
               // router manda para a próxima página
             }}
             >
-              <input
-                onChange={function (infosDoEvento) {
+              <Input
+                onChange={(infosDoEvento) => {
                   setName(infosDoEvento.target.value);
-                  console.log(name);
+                  // console.log(name);
                 }}
                 placeholder="Diz aí seu nome"
               />
