@@ -1,4 +1,6 @@
-import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
+import React from 'react';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import IndexPage from '../src/components/IndexPage';
 import db from '../db.json';
 
 const GlobalStyle = createGlobalStyle`
@@ -23,15 +25,18 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const theme = db.theme;
+const { theme } = db;
 
+// eslint-disable-next-line react/prop-types
 export default function App({ Component, pageProps }) {
   return (
     <>
+      <IndexPage />
       <ThemeProvider theme={theme}>
         <GlobalStyle />
+        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         <Component {...pageProps} />
       </ThemeProvider>
     </>
-  )
+  );
 }
