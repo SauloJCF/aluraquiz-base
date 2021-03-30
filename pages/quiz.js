@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
+import { useRouter } from 'next/router';
 import db from '../db.json';
 import Widget from '../src/components/Widget';
 import QuizBackground from '../src/components/QuizBackground';
@@ -10,6 +11,7 @@ import Button from '../src/components/Button';
 import QuizLogo from '../src/components/QuizLogo';
 
 function ResultWidget({ results }) {
+  const { query } = useRouter();
   return (
     <Widget>
       <Widget.Header>
@@ -18,6 +20,8 @@ function ResultWidget({ results }) {
 
       <Widget.Content>
         <p>
+          {query.name}
+          {', '}
           Você acertou
           {' '}
           {results.filter((x) => x === true).length}
@@ -48,7 +52,14 @@ function LoadingWidget() {
       </Widget.Header>
 
       <Widget.Content>
-        [Desafio do Loading]
+        <img
+          alt="Descrição"
+          style={{
+            width: '100%',
+            objectFit: 'cover',
+          }}
+          src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Youtube_loading_symbol_1_(wobbly).gif"
+        />
       </Widget.Content>
     </Widget>
   );
@@ -106,10 +117,10 @@ function QuestionWidget({
               >
                 <input
                   style={{ display: 'none' }}
-                  type="radio"
-                  name={questionId}
                   id={alternativeId}
+                  name={questionId}
                   onChange={() => setSelectedAlternative(alternativeIndex)}
+                  type="radio"
                 />
                 {alternative}
               </Widget.Topic>
