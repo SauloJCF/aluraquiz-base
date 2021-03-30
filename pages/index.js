@@ -20,9 +20,10 @@ export default function Home() {
         <QuizLogo />
         <Widget>
           <Widget.Header>
-            <h1>The legend of Zelda</h1>
+            <h1>{db.title}</h1>
           </Widget.Header>
           <Widget.Content>
+            <p>{db.description}</p>
             <form onSubmit={(infosDoEvento) => {
               router.push(`/quiz?name=${name}`);
               infosDoEvento.preventDefault();
