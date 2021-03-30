@@ -32,7 +32,7 @@ function ResultWidget({ results }) {
           {results.map((result, index) => {
             const questionNumber = index + 1;
             return (
-              <li key={`result__${result}`}>
+              <li key={`quest__${questionNumber}__result__${result}`}>
                 {`#${questionNumber.toLocaleString(undefined, { minimumIntegerDigits: 2 })} Resultado: `}
                 {result === true ? 'Acertou' : 'Errou'}
               </li>
