@@ -16,6 +16,8 @@ import Link from '../src/components/Link';
 export default function Home() {
   const router = useRouter();
   const [name, setName] = React.useState('');
+  const hasName = name.length !== 0;
+
   return (
     <QuizBackground backgroundImage={db.bg}>
       <QuizContainer>
@@ -48,7 +50,7 @@ export default function Home() {
                 placeholder="Diz aí seu nome"
                 value={name}
               />
-              <Button type="submit" disabled={name.length === 0} value="botaoJogar">
+              <Button type="submit" disabled={!hasName} value="botaoJogar">
                 {`Jogar ${name}`}
               </Button>
             </form>
@@ -80,7 +82,11 @@ export default function Home() {
                   <li key={linkExterno}>
                     <Widget.Topic
                       as={Link}
-                      href={`/quiz/${projectName}___${githubUser}`}
+                      href={{
+                        pathname: `/quiz/${projectName}___${githubUser}`,
+                        query: { name },
+                      }}
+                      disabled={!hasName}
                     >
                       {`${githubUser}/${projectName}`}
                     </Widget.Topic>
@@ -88,6 +94,11 @@ export default function Home() {
                 );
               })}
             </ul>
+            <p
+              style={{ display: !hasName ? 'block' : 'none' }}
+            >
+              Por favor, entre com o nome para acessar.
+            </p>
           </Widget.Content>
         </Widget>
         <Footer
