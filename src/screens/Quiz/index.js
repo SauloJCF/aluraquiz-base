@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-
 import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
+
 // import db from '../../../db.json';
 import Widget from '../../components/Widget';
 import BackLinkArrow from '../../components/BackLinkArrow';
@@ -14,7 +15,16 @@ import QuizLogo from '../../components/QuizLogo';
 function ResultWidget({ results }) {
   const { query } = useRouter();
   return (
-    <Widget>
+    <Widget
+      as={motion.section}
+      transition={{ delay: 0, duration: 0.5 }}
+      variants={{
+        show: { opacity: 1, y: '0' },
+        hidden: { opacity: 0, y: '100%' },
+      }}
+      initial="hidden"
+      animate="show"
+    >
       <Widget.Header>
         <BackLinkArrow href="/" />
         Tela de Resultado:
@@ -28,7 +38,7 @@ function ResultWidget({ results }) {
           {' '}
           {results.filter((x) => x === true).length}
           {' '}
-          perguntas
+          perguntas!!!
         </p>
         <ul>
           {results.map((result, index) => {
@@ -76,7 +86,16 @@ function QuestionWidget({
   const isCorrect = selectedAlternative === question.answer;
   const hasAlternativeSelected = selectedAlternative !== undefined;
   return (
-    <Widget>
+    <Widget
+      as={motion.section}
+      transition={{ delay: 0, duration: 0.5 }}
+      variants={{
+        show: { opacity: 1, y: '0' },
+        hidden: { opacity: 0, y: '100%' },
+      }}
+      initial="hidden"
+      animate="show"
+    >
       <Widget.Header>
         <BackLinkArrow href="/" />
         <h3>{`Pergunta ${questionIndex + 1} de ${totalQuestions}`}</h3>
