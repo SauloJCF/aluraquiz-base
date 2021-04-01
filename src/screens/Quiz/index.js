@@ -4,7 +4,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 // import db from '../../../db.json';
 import Widget from '../../components/Widget';
-import BackLinkArrow from '../../components/BackLinkArrow'
+import BackLinkArrow from '../../components/BackLinkArrow';
 import QuizBackground from '../../components/QuizBackground';
 import QuizContainer from '../../components/QuizContainer';
 import AlternativeForm from '../../components/AlternativeForm';
@@ -16,6 +16,7 @@ function ResultWidget({ results }) {
   return (
     <Widget>
       <Widget.Header>
+        <BackLinkArrow href="/" />
         Tela de Resultado:
       </Widget.Header>
 

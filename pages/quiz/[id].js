@@ -26,6 +26,7 @@ export async function getServerSideProps(context) {
     })
     .then((respostaConvertidaEmObjeto) => respostaConvertidaEmObjeto)
     .catch((err) => {
+      // eslint-disable-next-line no-console
       console.error(err);
     });
 

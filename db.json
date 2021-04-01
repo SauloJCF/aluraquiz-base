@@ -1,45 +1,56 @@
 {
-    "bg": "https://www.hitalent.co/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMmJDQXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--1452099b706ad7d079f7a3a4dd5d702ebeeae45f/HiTalent.png",
-    "title": "Quiz JavaScript #AluraQuiz",
-    "description": "Um quiz rápido sobre o mundo do JavaScript",
+    "bg": "https://s1.1zoom.me/big0/288/Formula_1_Logo_Emblem_Red_Black_background_586483_1280x720.jpg",
+    "title": "Quiz Formula 1 #AluraQuiz",
+    "description": "Um quiz rápido sobre o mundo da Formula 1",
     "questions": [
       {
-        "image": "https://media.giphy.com/media/j5P0DQIOf4PonLi55G/giphy.gif",
-        "title": "Qual a diferença entre = , == e === ?",
+        "image": "https://boletimdopaddock.com.br/wp-content/uploads/2017/06/GP-do-Canad%C3%A1-2011-Jenson-Button-1-2.gif",
+        "title": "Qual foi o mais longo GP da Fórmula 1, e quem foi o vencedor?",
         "description": "Pergunta fácil em!",
-        "answer": 1,
-        "alternatives": [
-          "São a mesma coisa",
-          "O = significa atribuição de valor. Já == verifica a igualdade do valor, enquanto === verifica valor e tipo de variável."
-        ]
-      },
-      {
-        "image": "https://media.giphy.com/media/Ie2Hs3A0uJRtK/giphy.gif",
-        "title": "Que tipos de dados são suportados em JavaScript?",
-        "description": "E agora? Você sabe?",
         "answer": 0,
         "alternatives": [
-          "Number, String, Undefined, Null e Bool.",
-          "Int, String, Undefined, Null e Bool."
+          "GP do Canadá 2011, Jenson Button",
+          "500 milhas de Indianápolis 1951, Lee Wallard"
         ]
       },
       {
-        "image": "https://media.giphy.com/media/iI4vhciiVh2b3j9sgo/giphy.gif",
-        "title": "Qual a diferença de window e global?",
+        "image": "https://s2.glbimg.com/F9esmM9U_N1BIPTUsflldcmb8_Q=/0x0:4096x2481/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2019/U/2/4I8majRyGXKtCNJwFIhg/eks1kbawoaa51wv.jfif",
+        "title": "Qual o mais jovem piloto a vencer um grande prêmio de F1, e quantos anos possuia na época?",
+        "description": "E agora? Você sabe?",
         "answer": 1,
         "alternatives": [
-          "São a mesma coisa",
-          "window é o escopo global no browser, e global no node"
+          "Fernando Alonso, aos 22 anos.",
+          "Sebastian Vetel, aos 21 anos",
+          "Valtteri Bottas, aos 23 anos",
+          "Sebastian Vettel, aos 20 anos"
         ]
       },
       {
-        "image": "https://media.giphy.com/media/iI4vhciiVh2b3j9sgo/giphy.gif",
-        "title": "Qual a forma antiga de trabalhar com AJAX na Web?",
+        "image": "https://media-manager.noticiasaominuto.com/1920/naom_5c91529ec85b8.jpg",
+        "title": "Quantas vezes, em média, o câmbio de um carro de F1 é acionado durante a corrida GP de Mônaco?",
         "answer": 1,
         "alternatives": [
-          "JSONHttpRequest",
-          "XMLHttpRequest",
-          "fetch"
+          "2730 vezes",
+          "3744 vezes"
+        ]
+      },
+      {
+        "image": "https://www.recreio.com.br/images/large/2020/02/11/bandeira-capa-1217911.jpeg",
+        "title": "Qual foi o único piloto brasileiro a vencer uma corrida em seu ano de estreia?",
+        "answer": 2,
+        "alternatives": [
+          "Airton Senna",
+          "Nelson Piquet",
+          "Emerson Fittipaldi"
+        ]
+      },
+      {
+        "image": "https://c4.wallpaperflare.com/wallpaper/659/965/95/red-bull-f1-hd-cars-wallpaper-preview.jpg",
+        "title": "Qual a maior velocidade já alcançada por um carro F1 em corrida?",
+        "answer": 0,
+        "alternatives": [
+          "372,6 km/h (Juan Pablo Montoya, 2005)",
+          "378 km/h (Valtteri Bottas, 2016)"
         ]
       }
     ],
@@ -49,9 +60,9 @@
     ],
     "theme": {
       "colors": {
-        "primary": "#222222",
-        "secondary": "#e89c3f",
-        "mainBg": "#213f4e",
+        "primary": "#b22a00",
+        "secondary": "#ff3d00",
+        "mainBg": "#000000",
         "contrastText": "#FFFFFF",
         "wrong": "#FF5722",
         "success": "#4CAF50"
