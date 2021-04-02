@@ -1,20 +1,34 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-
 import { useRouter } from 'next/router';
-import db from '../db.json';
-import Widget from '../src/components/Widget';
-import QuizBackground from '../src/components/QuizBackground';
-import QuizContainer from '../src/components/QuizContainer';
-import AlternativeForm from '../src/components/AlternativeForm';
-import Button from '../src/components/Button';
-import QuizLogo from '../src/components/QuizLogo';
+import { motion } from 'framer-motion';
+import Lottie from 'react-lottie';
+
+// import db from '../../../db.json';
+import Widget from '../../components/Widget';
+import BackLinkArrow from '../../components/BackLinkArrow';
+import QuizBackground from '../../components/QuizBackground';
+import QuizContainer from '../../components/QuizContainer';
+import AlternativeForm from '../../components/AlternativeForm';
+import Button from '../../components/Button';
+import QuizLogo from '../../components/QuizLogo';
+import animationData from './animations/loading.json';
 
 function ResultWidget({ results }) {
   const { query } = useRouter();
   return (
-    <Widget>
+    <Widget
+      as={motion.section}
+      transition={{ delay: 0, duration: 0.5 }}
+      variants={{
+        show: { opacity: 1, y: '0' },
+        hidden: { opacity: 0, y: '100%' },
+      }}
+      initial="hidden"
+      animate="show"
+    >
       <Widget.Header>
+        <BackLinkArrow href="/" />
         Tela de Resultado:
       </Widget.Header>
 
@@ -22,11 +36,11 @@ function ResultWidget({ results }) {
         <p>
           {query.name}
           {', '}
-          Você acertou
+          você acertou
           {' '}
           {results.filter((x) => x === true).length}
           {' '}
-          perguntas
+          perguntas!!!
         </p>
         <ul>
           {results.map((result, index) => {
@@ -45,6 +59,15 @@ function ResultWidget({ results }) {
 }
 
 function LoadingWidget() {
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
+
   return (
     <Widget>
       <Widget.Header>
@@ -52,14 +75,15 @@ function LoadingWidget() {
       </Widget.Header>
 
       <Widget.Content>
-        <img
-          alt="Descrição"
-          style={{
-            width: '100%',
-            objectFit: 'cover',
-          }}
-          src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Youtube_loading_symbol_1_(wobbly).gif"
-        />
+        <div>
+          <Lottie
+            options={defaultOptions}
+            width={200}
+            height={200}
+            isStopped={false}
+            isPaused={false}
+          />
+        </div>
       </Widget.Content>
     </Widget>
   );
@@ -74,8 +98,18 @@ function QuestionWidget({
   const isCorrect = selectedAlternative === question.answer;
   const hasAlternativeSelected = selectedAlternative !== undefined;
   return (
-    <Widget>
+    <Widget
+      as={motion.section}
+      transition={{ delay: 0, duration: 0.5 }}
+      variants={{
+        show: { opacity: 1, y: '0' },
+        hidden: { opacity: 0, y: '100%' },
+      }}
+      initial="hidden"
+      animate="show"
+    >
       <Widget.Header>
+        <BackLinkArrow href="/" />
         <h3>{`Pergunta ${questionIndex + 1} de ${totalQuestions}`}</h3>
       </Widget.Header>
       <img
@@ -149,16 +183,14 @@ const screenStates = {
   RESULT: 'RESULT',
 };
 
-export default function QuizPage() {
-  // const router = useRouter();
-  // const { query: { name } } = router;
-
+export default function QuizPage({ externalQuestions, externalBg }) {
   const [screenState, setScreenState] = React.useState(screenStates.LOADING);
   const [results, setResults] = React.useState([]);
-  const totalQuestions = db.questions.length;
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const questionIndex = currentQuestion;
-  const question = db.questions[questionIndex];
+  const question = externalQuestions[questionIndex];
+  const totalQuestions = externalQuestions.length;
+  const bg = externalBg;
 
   function addResult(result) {
     setResults([
@@ -177,7 +209,7 @@ export default function QuizPage() {
     // fetch() ...
     setTimeout(() => {
       setScreenState(screenStates.QUIZ);
-    }, 1 * 1000);
+    }, 1 * 1500);
     // nasce === didMount
   }, []);
 
@@ -191,7 +223,7 @@ export default function QuizPage() {
   }
 
   return (
-    <QuizBackground backgroundImage={db.bg}>
+    <QuizBackground backgroundImage={bg}>
       <QuizContainer>
         <QuizLogo />
 
