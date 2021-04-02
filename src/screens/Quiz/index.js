@@ -2,6 +2,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
+import Lottie from 'react-lottie';
 
 // import db from '../../../db.json';
 import Widget from '../../components/Widget';
@@ -11,6 +12,7 @@ import QuizContainer from '../../components/QuizContainer';
 import AlternativeForm from '../../components/AlternativeForm';
 import Button from '../../components/Button';
 import QuizLogo from '../../components/QuizLogo';
+import animationData from './animations/loading.json';
 
 function ResultWidget({ results }) {
   const { query } = useRouter();
@@ -57,6 +59,15 @@ function ResultWidget({ results }) {
 }
 
 function LoadingWidget() {
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
+
   return (
     <Widget>
       <Widget.Header>
@@ -64,14 +75,15 @@ function LoadingWidget() {
       </Widget.Header>
 
       <Widget.Content>
-        <img
-          alt="Descrição"
-          style={{
-            width: '100%',
-            objectFit: 'cover',
-          }}
-          src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Youtube_loading_symbol_1_(wobbly).gif"
-        />
+        <div>
+          <Lottie
+            options={defaultOptions}
+            width={200}
+            height={200}
+            isStopped={false}
+            isPaused={false}
+          />
+        </div>
       </Widget.Content>
     </Widget>
   );
@@ -197,7 +209,7 @@ export default function QuizPage({ externalQuestions, externalBg }) {
     // fetch() ...
     setTimeout(() => {
       setScreenState(screenStates.QUIZ);
-    }, 1 * 1000);
+    }, 1 * 1500);
     // nasce === didMount
   }, []);
 
